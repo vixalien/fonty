@@ -1,6 +1,12 @@
 # project name & prog lang
 project('com.vixalien.gtk-hello', 'vala', 'c')
 
+# include translations module
+i18n = import('i18n')
+
+# set our translation domain
+add_global_arguments('-DGETTEXT_PACKAGE="@@@"'.format(meson.project_name()), language: 'c')
+
 # executable, files and dependencies
 executable(
   meson.project_name(),
@@ -11,16 +17,23 @@ executable(
   install: true
 )
 
-# install the .desktop file
-install_data(
-  'data' / 'gtk-hello.desktop',
+# translate & install the .desktop file
+i18n.merge_file(
+  input: 'data' / 'gtk-hello.desktop.in',
+  output: meson.project_name() + '.desktop',
+  po_dir: meson.source_root() / 'po',
+  type: 'desktop',
+  install: true,
   install_dir: get_option('datadir') / 'applications',
-  rename: meson.project_name() + '.desktop'
 )
 
-# install the .metainfo.xml file
-install_data(
-  'data' / 'gtk-hello.metainfo.xml',
+# translate & install the .metainfo.xml file
+i18n.merge_file(
+  input: 'data' / 'gtk-hello.metainfo.xml.in',
+  output: meson.project_name() + '.metainfo.xml',
+  po_dir: meson.source_root() / 'po',
+  install: true,
   install_dir: get_option('datadir') / 'metainfo',
-  rename: meson.project_name() + '.metainfo.xml'
 )
+
+subdir('po')
