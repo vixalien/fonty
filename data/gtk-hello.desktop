@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=GTK Hello
+Comment=An app that helps me learn GTK
+Categories=Utility;GTK;
+
+Icon=gtk-hello
+Exec=gtk-hello
+Terminal=false
