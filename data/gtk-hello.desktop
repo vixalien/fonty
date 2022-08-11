@@ -4,8 +4,8 @@ Type=Application
 
 Name=GTK Hello
 Comment=An app that helps me learn GTK
-Categories=Utility;GTK;
+Categories=Development;Education;
 
-Icon=gtk-hello
-Exec=gtk-hello
+Icon=com.vixalien.gtk-hello
+Exec=com.vixalien.gtk-hello
 Terminal=false
