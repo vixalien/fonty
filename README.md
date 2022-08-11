@@ -14,3 +14,11 @@ Putting the link to the tutorial here cause I might forget: https://docs.element
 - I think we don't create the `Gtk.Application` but instead extend from it
 - What's the difference between `run` and `activate`? Why not just call `MyApp().activate`?
 - Maybe upgrade to GTK4
+
+#### hello-world stage
+
+- Why `GPL` by default instead of `MIT` ????????...??..?????
+- People might not know about the different licenses.
+- wth is SPDX? I genuinely have no idea
+- I assume many people would mistake the `<>` tags for placeholders and actually not required for email
+- Why not continue from previous project and create a new one???

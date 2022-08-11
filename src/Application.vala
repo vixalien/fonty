@@ -1,20 +1,18 @@
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: 2022 Angelo Verlain <geoangercola@gmail.com>
+ */
+
 public class MyApp : Gtk.Application {
   public MyApp () {
     Object (
-      application_id: "com.vixalien.gtk-hello",
+      application_id: "com.vixalien.gtk_hello",
       flags: ApplicationFlags.FLAGS_NONE
     );
   }
 
   protected override void activate () {
-    var button_hello = new Gtk.Button.with_label("Click me!") {
-    	margin = 12
-    };
-
-    button_hello.clicked.connect(() => {
-      button_hello.label = "Hello World!";
-      button_hello.sensitive = false;
-    });
+    var label = new Gtk.Label ("Hello Again World!");
 
     var main_window = new Gtk.ApplicationWindow(this) {
       default_height = 300,
@@ -22,7 +20,7 @@ public class MyApp : Gtk.Application {
       title = "Hello World"
     };
 
-    main_window.add(button_hello);
+    main_window.add(label);
     main_window.show_all();
   }
 
