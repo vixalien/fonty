@@ -1,0 +1,19 @@
+app-id: com.vixalien.gtk-hello
+
+runtime: org.gnome.Platform
+runtime-version: '42'
+sdk: org.gnome.Sdk
+
+command: com.vixalien.gtk-hello
+
+finish-args:
+  - '--share=ipc'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+
+modules:
+  - name: gtk-hello
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .
