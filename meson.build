@@ -37,3 +37,5 @@ i18n.merge_file(
 )
 
 subdir('po')
+
+subdir('data' / 'icons')
