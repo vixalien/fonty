@@ -12,7 +12,8 @@ public class MyApp : Gtk.Application {
   }
 
   protected override void activate () {
-    var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
+    // var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
+    var box = new Gtk.FlowBox ();
 
     var main_window = new Gtk.ApplicationWindow(this) {
       default_height = 300,
@@ -57,6 +58,11 @@ public class MyApp : Gtk.Application {
 
         foreach (var face in faces) {
           var facelabel = new Gtk.Label(face.get_face_name());
+          var attrs = new Pango.AttrList();
+          attrs.insert(new Pango.AttrFontDesc (face.describe ()));
+          attrs.insert(Pango.attr_scale_new (Pango.Scale.XX_LARGE));
+
+          facelabel.attributes = attrs;
           facesbox.append(facelabel);
         }
 
