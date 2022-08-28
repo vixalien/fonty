@@ -31,10 +31,44 @@ public class MyApp : Gtk.Application {
     //  stdout.printf((string) families);
     //  stdout.printf("Number of fonts is " + (length == "" ? "0" : length) + "yep");
 
-    foreach (var family in families) {
+    if (families.length == 0) {
+      box.add(new Gtk.Label("No font faces"));
+    } else {
+      var fontnames = new List<string>();
+
+      foreach (var family in families) {
+        fontnames.append (family.get_name());
+      }
+
+      fontnames.sort((a, b) => {
+        return a.ascii_casecmp (b);
+      });
+
+      foreach (var fontname in fontnames) {
+        stdout.printf("Got font: "+ fontname + "\n");
+      }
+
+      var family = families[0];
       var label = new Gtk.Label(family.get_name());
-      box.add(label);
+      var fontbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
+      fontbox.add(label);
+
+      Pango.FontFace[] faces;
+
+      family.list_faces(out faces);
+
+      var facesbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
+
+      foreach (var face in faces) {
+        var facelabel = new Gtk.Label(face.get_face_name());
+        facesbox.add(facelabel);
+      }
+
+      fontbox.add(facesbox);
+
+      box.add(fontbox);
     }
+
 
     main_window.add(box);
     main_window.show_all();
