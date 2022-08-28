@@ -32,46 +32,45 @@ public class MyApp : Gtk.Application {
     //  stdout.printf("Number of fonts is " + (length == "" ? "0" : length) + "yep");
 
     if (families.length == 0) {
-      box.add(new Gtk.Label("No font faces"));
+      box.append(new Gtk.Label("No font faces"));
     } else {
-      var fontnames = new List<string>();
+      var fontlist = new List<Pango.FontFamily>();
 
       foreach (var family in families) {
-        fontnames.append (family.get_name());
+        fontlist.append (family);
       }
 
-      fontnames.sort((a, b) => {
-        return a.ascii_casecmp (b);
+      fontlist.sort((a, b) => {
+        return a.get_name().ascii_casecmp (b.get_name());
       });
 
-      foreach (var fontname in fontnames) {
-        stdout.printf("Got font: "+ fontname + "\n");
+      foreach (var family in fontlist) {
+        var label = new Gtk.Label(family.get_name());
+        var fontbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
+        fontbox.append(label);
+
+        Pango.FontFace[] faces;
+
+        family.list_faces(out faces);
+
+        var facesbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
+
+        foreach (var face in faces) {
+          var facelabel = new Gtk.Label(face.get_face_name());
+          facesbox.append(facelabel);
+        }
+
+        fontbox.append(facesbox);
+
+        box.append(fontbox);
       }
-
-      var family = families[0];
-      var label = new Gtk.Label(family.get_name());
-      var fontbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
-      fontbox.add(label);
-
-      Pango.FontFace[] faces;
-
-      family.list_faces(out faces);
-
-      var facesbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
-
-      foreach (var face in faces) {
-        var facelabel = new Gtk.Label(face.get_face_name());
-        facesbox.add(facelabel);
-      }
-
-      fontbox.add(facesbox);
-
-      box.add(fontbox);
     }
 
+    var scrolled = new Gtk.ScrolledWindow ();
+    scrolled.set_child(box);
 
-    main_window.add(box);
-    main_window.show_all();
+    main_window.set_child (scrolled);
+    main_window.present();
   }
 
   public static int main (string[] args) {
