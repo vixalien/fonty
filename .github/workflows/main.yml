@@ -16,8 +16,8 @@ jobs:
     
     - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
       with:
-        bundle: MyApp.flatpak
-        manifest-path: com.vixalien.gtk-hello.yml
+        bundle: Fonty.flatpak
+        manifest-path: com.vixalien.fonty.yml
         run-tests: true
         
         repository-name: appcenter

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.vixalien.Fonty</id>
+
+  <name>Fonty</name>
+  <summary>View all your installed fonts</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      View all your installed fonts.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">com.vixalien.Fonty.desktop</launchable>
+
+  <content_rating type="oars-1.1" />
+</component>

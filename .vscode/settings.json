@@ -1,5 +1,5 @@
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/flatpak/flatpak-builder/main/data/flatpak-manifest.schema.json": "file:///home/alien/src/gtk-hello/com.vixalien.gtk-hello.yml"
+    "https://raw.githubusercontent.com/flatpak/flatpak-builder/main/data/flatpak-manifest.schema.json": "file:///home/alien/src/gtk-hello/com.vixalien.fonty.yml"
   }
 }

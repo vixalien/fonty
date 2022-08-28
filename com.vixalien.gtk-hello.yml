@@ -1,10 +1,10 @@
-app-id: com.vixalien.gtk-hello
+app-id: com.vixalien.Fonty
 
 runtime: org.gnome.Platform
 runtime-version: '42'
 sdk: org.gnome.Sdk
 
-command: com.vixalien.gtk-hello
+command: com.vixalien.Fonty
 
 finish-args:
   - '--share=ipc'
@@ -12,7 +12,7 @@ finish-args:
   - '--socket=wayland'
 
 modules:
-  - name: gtk-hello
+  - name: fonty
     buildsystem: meson
     sources:
       - type: dir

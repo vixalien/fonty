@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Fonty
+Comment=View all your installed fonts
+Categories=Development;Education;
+
+Icon=com.vixalien.Fonty
+Exec=com.vixalien.Fonty
+Terminal=false

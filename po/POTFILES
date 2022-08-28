@@ -1,3 +1,4 @@
 src/Application.vala
-data/gtk-hello.desktop.in
-data/gtk-hello.metainfo.xml.in
+src/Window.vala
+data/fonty.desktop.in
+data/fonty.metainfo.xml.in

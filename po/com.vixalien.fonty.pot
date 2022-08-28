@@ -26,7 +26,7 @@ msgid "Hello World"
 msgstr ""
 
 #: data/gtk-hello.desktop.in:6 data/gtk-hello.metainfo.xml.in:5
-msgid "GTK Hello"
+msgid "Fonty"
 msgstr ""
 
 #: data/gtk-hello.desktop.in:7 data/gtk-hello.metainfo.xml.in:6

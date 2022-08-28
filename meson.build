@@ -1,5 +1,5 @@
 # project name & prog lang
-project('com.vixalien.gtk-hello', 'vala', 'c')
+project('com.vixalien.Fonty', 'vala', 'c')
 
 # include translations module
 i18n = import('i18n')
@@ -8,9 +8,15 @@ i18n = import('i18n')
 add_global_arguments('-DGETTEXT_PACKAGE="@@@"'.format(meson.project_name()), language: 'c')
 
 # executable, files and dependencies
+files = [
+  'src' / 'Application.vala',
+  'src' / 'Main.vala',
+  'src' / 'Window.vala',
+]
+
 executable(
   meson.project_name(),
-  'src' / 'Application.vala',
+  files,
   dependencies: [
     dependency('gtk4'),
     dependency('pangocairo')
@@ -20,7 +26,7 @@ executable(
 
 # translate & install the .desktop file
 i18n.merge_file(
-  input: 'data' / 'gtk-hello.desktop.in',
+  input: 'data' / 'fonty.desktop.in',
   output: meson.project_name() + '.desktop',
   po_dir: meson.source_root() / 'po',
   type: 'desktop',
@@ -30,7 +36,7 @@ i18n.merge_file(
 
 # translate & install the .metainfo.xml file
 i18n.merge_file(
-  input: 'data' / 'gtk-hello.metainfo.xml.in',
+  input: 'data' / 'fonty.metainfo.xml.in',
   output: meson.project_name() + '.metainfo.xml',
   po_dir: meson.source_root() / 'po',
   install: true,
