@@ -14,11 +14,18 @@ public class MyApp : Gtk.Application {
   protected override void activate () {
     // var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
     var box = new Gtk.FlowBox ();
+    box.column_spacing = 10;
+    box.row_spacing = 10;
+    box.margin_end = 15;
+    box.margin_start = 15;
+    box.margin_top = 15;
+    box.margin_bottom = 15;
+    box.selection_mode = Gtk.SelectionMode.NONE;
 
     var main_window = new Gtk.ApplicationWindow(this) {
-      default_height = 300,
-      default_width = 300,
-      title = _("Hello World")
+      default_height = 500,
+      default_width = 500,
+      title = _("Fonty")
     };
 
     var fontMap = Pango.CairoFontMap.get_default();
@@ -46,20 +53,30 @@ public class MyApp : Gtk.Application {
       });
 
       foreach (var family in fontlist) {
-        var label = new Gtk.Label(family.get_name());
         var fontbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
+        fontbox.margin_start = 15;
+        fontbox.margin_end = 15;
+        fontbox.margin_top = 15;
+        fontbox.margin_bottom = 15;
+
+        var label = new Gtk.Label(family.get_name());
+        var labelattrs = new Pango.AttrList ();
+        labelattrs.insert(Pango.attr_weight_new (Pango.Weight.MEDIUM));
+        label.halign = Gtk.Align.START;
+        label.attributes = labelattrs;
         fontbox.append(label);
 
         Pango.FontFace[] faces;
 
         family.list_faces(out faces);
 
-        var facesbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 10);
+        var facesbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 
         foreach (var face in faces) {
           var facelabel = new Gtk.Label(face.get_face_name());
+          facelabel.halign = Gtk.Align.START;
           var attrs = new Pango.AttrList();
-          attrs.insert(new Pango.AttrFontDesc (face.describe ()));
+          // attrs.insert(new Pango.AttrFontDesc (face.describe ()));
           attrs.insert(Pango.attr_scale_new (Pango.Scale.XX_LARGE));
 
           facelabel.attributes = attrs;
