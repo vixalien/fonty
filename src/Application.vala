@@ -62,7 +62,10 @@ public class MyApp : Gtk.Application {
 
         fontbox.append(facesbox);
 
-        box.append(fontbox);
+        var frame = new Gtk.Frame(null);
+        frame.set_child(fontbox);
+
+        box.append(frame);
       }
     }
 
