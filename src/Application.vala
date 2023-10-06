@@ -1,6 +1,6 @@
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: 2022 Angelo Verlain <geoangercola@gmail.com>
+ * SPDX-FileCopyrightText: 2022 Angelo Verlain (https://vixalien.com)
  */
 
 namespace Fonty {
